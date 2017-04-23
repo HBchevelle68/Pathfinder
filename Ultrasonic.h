@@ -1,6 +1,8 @@
 #ifndef Ultrasonic_h
 #define Ultrasonic_h  
 
+#include "Arduino.h"
+
 class Ultrasonic
 {
 public:
@@ -14,7 +16,7 @@ private:
   short _sensorPin; //PWM pin
 
     
-}
+};
 
 
 

@@ -1,10 +1,12 @@
-
-
 #include "Sabertooth.h"
-
+#include "Ultrasonic.h"
 
 Sabertooth ST1 = Sabertooth(128); //Address RIGHT motor controller
 Sabertooth ST2 = Sabertooth(130); //Address LEFT motor controller
+Ultrasonic US1 = Ultrasonic(2);
+
+long inches;
+
 
 void setup()
 {
@@ -14,8 +16,25 @@ void setup()
 
 void loop()
 {
+  inches = US1.ReadSensor();
+  
+
+  if(inches <= 18){
+    
+    ST1.stop();
+    ST2.stop();
+    
+  } else {
+
+    ST1.motor(1,30);
+    ST1.motor(2,30);
+    ST2.motor(1,30);
+    ST2.motor(2,30);
+    
+  }
 
 
+/*
   for(int i = 1; i < 127; i++){
     ST1.motor(1, i);
     ST1.motor(2, i);
@@ -43,6 +62,6 @@ void loop()
 
 
   delay(2000);
-
+*/
 }
 
